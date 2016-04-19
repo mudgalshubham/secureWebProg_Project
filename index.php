@@ -42,21 +42,20 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 				
                 			if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
                 			{
-                					getSellerInfo($sellerid);
+                			//		getSellerInfo($sellerid);
                 			
-                			/*		$output = '';
-									if($stmt = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
+                					if($stmt2 = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
 									{
-									mysqli_stmt_bind_param($stmt, "s", $sellerid);
-									mysqli_stmt_execute($stmt);
-							        mysqli_stmt_bind_result($stmt, $sellername, $selleremail, $sellerphone);
-							        while(mysqli_stmt_fetch($stmt))
+									mysqli_stmt_bind_param($stmt2, "s", $sellerid);
+									mysqli_stmt_execute($stmt2);
+							        mysqli_stmt_bind_result($stmt2, $sellername, $selleremail, $sellerphone);
+							        while(mysqli_stmt_fetch($stmt2))
 									{
 										$sellername= htmlspecialchars($sellername);
 										$selleremail= htmlspecialchars($selleremail);
 							            $sellerphone= htmlspecialchars($sellerphone);
         							}
-							        mysqli_stmt_close($stmt);
+							        mysqli_stmt_close($stmt2);
         
        							 	echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
                 						<td>".$sellername."</td></tr>
@@ -66,7 +65,9 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 						<td>".$sellerphone."</td></tr></table></td>";
         
     								}
-                				*/
+    								else 
+    									echo "Error in getting user data";
+                				
                 			
                 			}		
                 			else if(!isset($_SESSION['authenticated']) && $s==null)
