@@ -10,7 +10,7 @@ session_start();
 session_regenerate_id();
 
 include_once('header.php');
-//if(!isset($_SESSION['authenticated']))							//Shows login form only if session is not authenticated(not already logged in)
+if(!isset($_SESSION['authenticated']))							//Shows login form only if session is not authenticated(not already logged in)
 {
 	echo "<div align=center><table><tr><td>User Login</td></tr>
 		<form action=add.php method=post>
@@ -23,7 +23,7 @@ include_once('header.php');
 		</table>
 		</div> ";
 }
-//else 
-//	header("Location:/project/index.php");							// If user is already is already logged in then redirects to the add character page
+else 
+	header("Location:/project/index.php");							// If user is already is already logged in then redirects to the add character page
 		
 ?>

@@ -36,7 +36,7 @@ else
 		}
 		
 			authenticate();
-			checkAuth();
+		//	checkAuth();
 			addCharacterMenu($s);
 		
 
