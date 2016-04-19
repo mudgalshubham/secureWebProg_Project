@@ -18,10 +18,11 @@ connect($db);
 
 echo " Welcome to the Catalog";
 
-if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,description, sellerid from catalog"))
+if($stmt = mysqli_prepare($db, "select c.itemid, c.itemname,c.price,c.picture,c.description, 
+							u.username, u.email, u.phone from catalog as c, users as u where c.sellerid=u.userid"))
 {
 		mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $itemid, $itemname, $price, $picture, $desc, $sellerid);
+        mysqli_stmt_bind_result($stmt, $itemid, $itemname, $price, $picture, $desc, $sellername, $selleremail, $sellerphone);
         while(mysqli_stmt_fetch($stmt))
 		{
 			$itemid= htmlspecialchars($itemid);
@@ -29,7 +30,10 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
             $price= htmlspecialchars($price);
 			$picture = htmlspecialchars($picture);
 			$desc = htmlspecialchars($desc);
-			$sellerid = htmlspecialchars($sellerid);
+			$sellername = htmlspecialchars($sellername);
+			$selleremail = htmlspecialchars($selleremail);
+			$sellerphone = htmlspecialchars($sellerphone);
+			
 			echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\">
 					<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
                 		<td><table cellpadding=\"10\"><tr><td>Product Name</td>
@@ -42,34 +46,13 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 				
                 			if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
                 			{
-                			//		getSellerInfo($sellerid);
-                			/*		connect($db);
-                					if($stmt2 = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
-									{
-									mysqli_stmt_bind_param($stmt2, "i", $sellerid);
-									mysqli_stmt_execute($stmt2);
-							        mysqli_stmt_bind_result($stmt2, $sellername, $selleremail, $sellerphone);
-							        while(mysqli_stmt_fetch($stmt2))
-									{
-										$sellername= htmlspecialchars($sellername);
-										$selleremail= htmlspecialchars($selleremail);
-							            $sellerphone= htmlspecialchars($sellerphone);
-        							}
 							        echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
                 						<td>".$sellername."</td></tr>
                 						<tr><td>Email</td>
 		                				<td>$".$selleremail."</td></tr>
         		        				<tr><td>Contact Number</td>
                 						<td>".$sellerphone."</td></tr></table></td>";
-							        
-							        mysqli_stmt_close($stmt2);
         
-       							 	
-        
-    								}
-    								else 
-    									echo "Error in getting user data\n 	";
-                			*/	
                 			
                 			}		
                 			else if(!isset($_SESSION['authenticated']) && $s==null)
@@ -87,32 +70,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
         }
 		mysqli_stmt_close($stmt);
 }
-$sid = 2;
-if($stmt2 = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
-									{
-									mysqli_stmt_bind_param($stmt2, "i", $sellerid);
-									mysqli_stmt_execute($stmt2);
-							        mysqli_stmt_bind_result($stmt2, $sellername, $selleremail, $sellerphone);
-							        while(mysqli_stmt_fetch($stmt2))
-									{
-										$sellername= htmlspecialchars($sellername);
-										$selleremail= htmlspecialchars($selleremail);
-							            $sellerphone= htmlspecialchars($sellerphone);
-        							}
-							        echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
-                						<td>".$sellername."</td></tr>
-                						<tr><td>Email</td>
-		                				<td>$".$selleremail."</td></tr>
-        		        				<tr><td>Contact Number</td>
-                						<td>".$sellerphone."</td></tr></table></td>";
-							        
-							        mysqli_stmt_close($stmt2);
         
-       							 	
-        
-    								}
-    								else 
-    									echo "Error in getting user data\n 	";
 
 function getSellerInfo($sellerid)
 {
