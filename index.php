@@ -24,6 +24,35 @@ isset($_REQUEST['bookid'])?$bookid=strip_tags($_REQUEST['bookid']):$bookid="";
 
 connect($db);
 
-echo " welcome to the Catalog";
+echo " Welcome to the Catalog";
+
+if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,description from catalog"))
+{
+  //    mysqli_stmt_bind_param($stmt, "i", $cid);
+		mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $itemid, $itemname, $price, $picture, $desc);
+        while(mysqli_stmt_fetch($stmt))
+		{
+			$itemid= htmlspecialchars($itemid);
+			$itemname= htmlspecialchars($itemname);
+            $price= htmlspecialchars($price);
+			$picture = htmlspecialchars($picture);
+			$desc = htmlspecialchars($desc);
+			echo "<div style=\"border: 5px ridge silver;\"><table>
+					<tr><td> <img src=\"".$picture."\"></td>
+                		<td><table><tr><td>Product Name</td>
+                				<td>".$itemname."</td></tr>
+                				<tr><td>Price</td>
+                				<td>".$price."</td></tr>
+                				<tr><td>Description</td>
+                				<td>".$desc."</td></tr> 
+                		</table></td>
+                		</tr></table></div> ";
+        }
+		mysqli_stmt_close($stmt);
+}
+
+
+
 
 ?>
