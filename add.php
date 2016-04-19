@@ -104,13 +104,13 @@ function updateProfileForm()
 		<form action=add.php method=post>
 		
 		<tr><td><input type=\"checkbox\" name=\"checkname\" value=\"newuname\"></td> 
-		<td>Update Name<input type=\"text\" name=\"uname\"></td></tr>
+		<td>Update Name</td><td><input type=\"text\" name=\"uname\"></td></tr>
 
 		<tr><td><input type=\"checkbox\" name=\"checkpass\" value=\"pass\"></td> 
-		<td>Update Password<input type=\"password\" name=\"newpass\"></td></tr>
+		<td>Update Password</td><td><input type=\"password\" name=\"newpass\"></td></tr>
 
 		<tr><td><input type=\"checkbox\" name=\"checkphone\" value=\"phone\"></td> 
-		<td>Update Phone<input type=\"text\" name=\"newphone\"></td></tr>
+		<td>Update Phone</td><td><input type=\"text\" name=\"newphone\"></td></tr>
 
 		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
 		<tr><td><input type=\"hidden\" name=\"s\" value=\"4\"/></td></tr>
