@@ -96,7 +96,7 @@ function authenticate()
 	$postEmail=mysqli_real_escape_string($db,$postEmail);
 	$postPass=mysqli_real_escape_string($db,$postPass);
 	
-	$query="select userid, uname, password, salt from users where email=?";
+	$query="select userid, username, password, salt from users where email=?";
 	if($stmt = mysqli_prepare($db, $query))	
 	{
 		mysqli_stmt_bind_param($stmt, "s", $postEmail);	
