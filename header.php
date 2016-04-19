@@ -20,7 +20,7 @@ if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 			<a href=add.php?s=3>Update Profile |</a>
  			<a href=add.php?s=15>Logout</a></p> 
  			<p><a href=index.php>Home</a></p>
-			<br><hr>
+			<hr>
  			";
   			
   
