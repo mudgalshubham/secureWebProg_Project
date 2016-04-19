@@ -27,9 +27,9 @@ if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 }
 else
 {
-	echo "<p style=\"float: right;\"><a href=login.php>Login </a>|
+	echo "<br><p style=\"float: right;\"><a href=login.php>Login </a>|
 			<a href=signup.php?optionadd=91> Sign Up</a></p>
-			<p><a href=index.php>Home</a></p> <br>
+			<p><a href=index.php>Home</a></p> 
 			<hr>
   			";
 }
