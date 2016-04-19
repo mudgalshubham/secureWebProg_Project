@@ -85,7 +85,7 @@ function addCharacterMenu($s)
 
 function updateProfile()
 {
-	global $checkname,$checkpass,$checkphone ;
+	global $checkname,$checkpass,$checkphone,$newuname, $newpass, $newphone ;
 	echo "Checked values are : ";
 	if($checkname != NULL)
 		echo $checkname;
@@ -94,7 +94,62 @@ function updateProfile()
 	if($checkphone != NULL)
 		echo $checkphone;
 	
+	$userid = $_SESSION['userid'];
 	
+	global $db, $newuname, $newpass;
+	connect($db);
+
+	//update User's Name
+	if($checkname != NULL)
+	{	
+		$newuname=mysqli_real_escape_string($db,$newuname);
+		
+		if($stmt = mysqli_prepare($db, "update users set username =? where userid=?"))
+   		{
+            mysqli_stmt_bind_param($stmt, "si", $newuname, $userid);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            echo "Name updated for user " . $_SESSION['uname'];
+  		}
+  		else
+  			echo "Error in modification of User's name!";
+  	}
+	
+	//update Password
+	if($checkpass != NULL)
+	{	
+		$newpass=mysqli_real_escape_string($db,$newpass);
+				
+		$salt = rand(50,10000);
+		$hash_salt=hash('sha256',$salt);
+		$hash_pass=hash('sha256',$newpass.$hash_salt);
+		
+		if($stmt = mysqli_prepare($db, "update users set salt =?, password=? where userid=?"))
+   		{
+            mysqli_stmt_bind_param($stmt, "ssi", $hash_salt ,$hash_pass, $userid);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            echo "Password updated for user " . $_SESSION['uname'];
+  		}
+  		else
+  			echo "Error in modification of password!";
+  	}
+	
+	//update User's Phone Number
+	if($checkphone != NULL)
+	{	
+		$newphone=mysqli_real_escape_string($db,$newphone);
+		
+		if($stmt = mysqli_prepare($db, "update users set phone =? where userid=?"))
+   		{
+            mysqli_stmt_bind_param($stmt, "si", $newphone, $userid);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            echo "Phone number updated for user " . $_SESSION['uname'];
+  		}
+  		else
+  			echo "Error in modification of User's name!";
+  	}
 	
 }
 
