@@ -1,4 +1,5 @@
 <?php
+
 // Name: project/add.php
 // Author: Shubham Mudgal
 // Purpose: User's profile with available actions
@@ -41,7 +42,8 @@ else
 }
 
 function addCharacterMenu($s)
-{	global $db, $cname, $side, $race, $cid,$url ;
+{	
+	global $db, $cname, $side, $race, $cid,$url ;
 	
 	if(is_numeric($s))
 	{
@@ -62,17 +64,21 @@ function addCharacterMenu($s)
 				 		break;		
 				 
 			default: header("Location:/project/index.php"); break;
+		}
 	}
 	
 }
 
 function addItemForm(){}
 
-function addItem(){}
+function addItem()
+{}
 
-function updateProfileForm(){}
+function updateProfileForm()
+{}
 
-function updateProfile(){}
+function updateProfile()
+{}
 
 
 function authenticate()
