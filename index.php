@@ -33,7 +33,7 @@ else
 {		
 	if($postUser == null)
 		{	
-			header("Location:/hw9/login.php");
+			header("Location:/project/login.php");
 		}
 		
 		$IPAddress = $_SERVER['REMOTE_ADDR']; 
@@ -45,7 +45,7 @@ else
 		if(!$isWhiteListIP  && $attemptCount >= 5)
 		{
 			logLogin($db, $postUser, "failure");
-			header("Location:/hw9/login.php");		
+			header("Location:/project/login.php");		
 		}
 		else 
 		{
