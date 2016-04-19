@@ -23,7 +23,9 @@ isset($_REQUEST['description'])?$description=strip_tags($_REQUEST['description']
 isset($_REQUEST['newuname'])?$newuname=strip_tags($_REQUEST['newuname']):$newuname="";
 isset($_REQUEST['newpass'])?$newpass=strip_tags($_REQUEST['newpass']):$newpass="";
 isset($_REQUEST['newphone'])?$newphone=strip_tags($_REQUEST['newphone']):$newphone="";
-isset($_REQUEST['check'])?$check=strip_tags($_REQUEST['check']):$check="";
+isset($_REQUEST['checkname'])?$checkname=strip_tags($_REQUEST['checkname']):$checkname="";
+isset($_REQUEST['checkpass'])?$checkpass=strip_tags($_REQUEST['checkpass']):$checkpass="";
+isset($_REQUEST['checkphone'])?$checkphone=strip_tags($_REQUEST['checkphone']):$checkphone="";
 $IPAddress ='';
 
 connect($db);
@@ -83,8 +85,17 @@ function addCharacterMenu($s)
 
 function updateProfile()
 {
-	global $check;
-	echo "Checked values are : ". $check;
+	global $checkname,$checkpass,$checkphone ;
+	echo "Checked values are : ";
+	if($checkname != NULL)
+		echo $checkname;
+	if($checkpass != NULL)
+		echo $checkpass;
+	if($checkphone != NULL)
+		echo $checkphone;
+	
+	
+	
 }
 
 function updateProfileForm()
@@ -92,13 +103,13 @@ function updateProfileForm()
 	echo "<div align=center><table><tr><td>Update User Profile</td></tr>
 		<form action=add.php method=post>
 		
-		<tr><td><input type=\"checkbox\" name=\"check\" value=\"newuname\"></td> 
+		<tr><td><input type=\"checkbox\" name=\"checkname\" value=\"newuname\"></td> 
 		<td>Update Name<input type=\"text\" name=\"uname\"></td></tr>
 
-		<tr><td><input type=\"checkbox\" name=\"check\" value=\"pass\"></td> 
+		<tr><td><input type=\"checkbox\" name=\"checkpass\" value=\"pass\"></td> 
 		<td>Update Password<input type=\"password\" name=\"newpass\"></td></tr>
 
-		<tr><td><input type=\"checkbox\" name=\"check\" value=\"phone\"></td> 
+		<tr><td><input type=\"checkbox\" name=\"checkphone\" value=\"phone\"></td> 
 		<td>Update Phone<input type=\"text\" name=\"newphone\"></td></tr>
 
 		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
