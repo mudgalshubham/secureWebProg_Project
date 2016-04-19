@@ -10,6 +10,7 @@ session_start();
 session_regenerate_id();
 
 include_once('header.php');
+include_once('/var/www/html/project/project-lib.php');
 
 isset($_REQUEST['optionadd'])?$optionadd=strip_tags($_REQUEST['optionadd']):$optionadd="";
 isset($_REQUEST['uname'])?$uname=strip_tags($_REQUEST['uname']):$uname="";

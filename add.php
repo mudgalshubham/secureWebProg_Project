@@ -51,12 +51,12 @@ else
 			addCharacterMenu($s);
 		}
 */
-		else 
-		{
+		 
+		
 			authenticate($db, $postEmail, $postPass);
 			checkAuth();
 			addCharacterMenu($s);
-		}
+		
 
 }
 
