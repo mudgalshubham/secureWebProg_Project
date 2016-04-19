@@ -56,7 +56,7 @@ function addUser()
 {
 	global $db, $uname, $newpass, $email, $phone;
 	connect($db);
-	echo "Hello from addUser funtion!";
+
 	if($stmt = mysqli_prepare($db, "select userid from users where email=?"))
 	{
 		mysqli_stmt_bind_param($stmt, "s", $email);
