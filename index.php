@@ -90,7 +90,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
 $sid = 2;
 if($stmt2 = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
 									{
-									mysqli_stmt_bind_param($stmt2, "i", $sid);
+									mysqli_stmt_bind_param($stmt2, "i", $sellerid);
 									mysqli_stmt_execute($stmt2);
 							        mysqli_stmt_bind_result($stmt2, $sellername, $selleremail, $sellerphone);
 							        while(mysqli_stmt_fetch($stmt2))
