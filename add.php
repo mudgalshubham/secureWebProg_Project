@@ -58,7 +58,7 @@ function addCharacterMenu($s)
 	
 			case 4:  updateProfile(); break;
 			
-			case 9:  echo "Inside case 9";break;//header("Location:/project/index.php"); break;	
+			case 9:  header("Location:/project/index.php"); break;	//echo "Inside case 9";break;
 
 			case 15: // Logout
 				 		logout();
