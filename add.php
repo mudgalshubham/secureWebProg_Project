@@ -64,15 +64,17 @@ function addCharacterMenu($s)
 	
 			case 4:  updateProfile(); break;
 			
-			case 9:  header("Location:/project/index.php"); break;	//echo "Inside case 9";break;
+			case 9:  header("Location:/project/index.php"); break;
 
 			case 15: // Logout
 				 		logout();
 				 		break;		
 				 
-			default: echo "Inside default case";break;
+			default: echo "Invalid Data Found";break;
 		}
 	}
+	else
+		echo "Invalid Data found!";
 	
 }
 
