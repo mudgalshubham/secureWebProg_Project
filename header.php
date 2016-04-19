@@ -15,10 +15,12 @@ echo "<html><head></head><body>
 
 if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 {
-	echo "<div> Welcome ". $_SESSION['uname']." <p><a href=index.php>Home</a></p>
-	<p style=\"float: right;\"><a href=add.php?s=1>Add Item to Sell |</a>
+	echo " Welcome ". $_SESSION['uname']."<br><p style=\"float: right;\">
+			<a href=add.php?s=1>Add Item to Sell |</a>
 			<a href=add.php?s=3>Update Profile |</a>
- 			<a href=add.php?s=15>Logout</a></p></div><br><hr>
+ 			<a href=add.php?s=15>Logout</a></p> 
+ 			<p><a href=index.php>Home</a></p>
+			<br><hr>
  			";
   			
   
