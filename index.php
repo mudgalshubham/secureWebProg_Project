@@ -37,15 +37,14 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 				<tr><td>Price</td>
                 				<td>$".$price."</td></tr>
                 				<tr><td>Description</td>
-                				<td>".$desc."</td></tr> 
-                				<tr><td>SellerID</td>
-                				<td>".$sellerid."</td></tr> ";
+                				<td>".$desc."</td></tr>  
+                				</table></td>";
                 				
                 			if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
                 			{
-                			//		echo getSellerInfo($sellerid);
+                					getSellerInfo($sellerid);
                 			
-                					$output = '';
+                			/*		$output = '';
 									if($stmt = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
 									{
 									mysqli_stmt_bind_param($stmt, "s", $sellerid);
@@ -67,11 +66,13 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 						<td>".$sellerphone."</td></tr></table></td>";
         
     								}
-                				
+                				*/
                 			
                 			}		
                 			else if(!isset($_SESSION['authenticated']) && $s==null)
-                				echo "<tr><td><a href=index.php?s=1>View Seller's Info</a></td></tr>";
+                				echo "<td><table cellpadding=\"10\">
+                						<tr><td><a href=index.php?s=1>View Seller's Info</a></td></tr>
+                						</table></td>";
                 			
                 			if($s==1)
                 			{
@@ -79,8 +80,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 						<tr><td>Please login first to view Seller's Info</td>
                 						</tr></table></td>";
                 			}
-                		echo "</table></td>
-                		</tr></table></div> <br>";
+                		echo " </tr></table></div> <br>";
         }
 		mysqli_stmt_close($stmt);
 }
@@ -90,28 +90,26 @@ function getSellerInfo($sellerid)
 	global $db;
 	$output = '';
 	if($stmt = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
-	{
-		mysqli_stmt_bind_param($stmt, "s", $sellerid);
-		mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $sellername, $selleremail, $sellerphone);
-        while(mysqli_stmt_fetch($stmt))
-		{
-			$sellername= htmlspecialchars($sellername);
-			$selleremail= htmlspecialchars($selleremail);
-            $sellerphone= htmlspecialchars($sellerphone);
-        }
-        mysqli_stmt_close($stmt);
+									{
+									mysqli_stmt_bind_param($stmt, "s", $sellerid);
+									mysqli_stmt_execute($stmt);
+							        mysqli_stmt_bind_result($stmt, $sellername, $selleremail, $sellerphone);
+							        while(mysqli_stmt_fetch($stmt))
+									{
+										$sellername= htmlspecialchars($sellername);
+										$selleremail= htmlspecialchars($selleremail);
+							            $sellerphone= htmlspecialchars($sellerphone);
+        							}
+							        mysqli_stmt_close($stmt);
         
-        $output =  $output . '<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
-                				<td>'.$sellername.'</td></tr>
-                				<tr><td>Email</td>
-                				<td>$'.$selleremail.'</td></tr>
-                				<tr><td>Contact Number</td>
-                				<td>'.$sellerphone.'</td></tr></table></td>';
+       							 	echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
+                						<td>".$sellername."</td></tr>
+                						<tr><td>Email</td>
+		                				<td>$".$selleremail."</td></tr>
+        		        				<tr><td>Contact Number</td>
+                						<td>".$sellerphone."</td></tr></table></td>";
         
-    }
-    
-        return $output;
+    								}
         
 }
 
