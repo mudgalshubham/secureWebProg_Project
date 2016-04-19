@@ -8,7 +8,7 @@
 
 session_start();
 session_regenerate_id();
-include_once('header.php');
+include('header.php');
 include_once('/var/www/html/project/project-lib.php');
 
 isset($_REQUEST['s'])?$s=strip_tags($_REQUEST['s']):$s="";
