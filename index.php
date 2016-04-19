@@ -47,7 +47,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 				<tr><td>Description</td>
                 				<td>".$desc."</td></tr> 
                 		</table></td>
-                		</tr></table></div> ";
+                		</tr></table></div> <br>";
         }
 		mysqli_stmt_close($stmt);
 }
