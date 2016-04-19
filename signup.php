@@ -14,7 +14,7 @@ include_once('header.php');
 isset($_REQUEST['optionadd'])?$optionadd=strip_tags($_REQUEST['optionadd']):$optionadd="";
 isset($_REQUEST['uname'])?$uname=strip_tags($_REQUEST['uname']):$uname="";
 isset($_REQUEST['email'])?$email=strip_tags($_REQUEST['email']):$email="";
-isset($_REQUEST['password'])?$password=strip_tags($_REQUEST['password']):$password="";
+isset($_REQUEST['newpass'])?$newpass=strip_tags($_REQUEST['newpass']):$newpass="";
 isset($_REQUEST['phone'])?$phone=strip_tags($_REQUEST['phone']):$phone="";
 
 
@@ -43,8 +43,9 @@ function addUsersForm()
 		<tr><td>CU Boulder Email ID</td><td><input type=\"email\" name=\"email\" required/></td></tr>
 		<tr><td>Password</td><td><input type=\"password\" name=\"newpass\" required/></td></tr>
 		<tr><td>Contact Number</td><td><input type=\"text\" name=\"phone\" /></td></tr>
-		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
 		<tr><td><input type=\"hidden\" name=\"optionadd\" value=\"92\"/></td></tr>
+		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
+		
 		</form>
 		</table>
 		</div> ";
@@ -54,7 +55,7 @@ function addUser()
 {
 	global $db, $uname, $newpass, $email, $phone;
 	connect($db);
-	
+	echo "Hello from addUser funtion!";
 	if($stmt = mysqli_prepare($db, "select userid from users where email=?"))
 	{
 		mysqli_stmt_bind_param($stmt, "s", $email);
