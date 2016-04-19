@@ -86,19 +86,19 @@ function addCharacterMenu($s)
 function updateProfile()
 {
 	global $checkname,$checkpass,$checkphone,$newuname, $newpass, $newphone ;
-	echo "Checked values are : ";
+/*	echo "Checked values are : ";
 	if($checkname != NULL)
 		echo $checkname." with new name: ".$newuname."\n";
 	if($checkpass != NULL)
 		echo $checkpass." with new name: ".$newpass."\n";
 	if($checkphone != NULL)
 		echo $checkphone." with new name: ".$newphone."\n";
-	
+*/	
 	$userid = $_SESSION['userid'];
 	
 	global $db, $newuname, $newpass;
 	connect($db);
-/*
+
 	//update User's Name
 	if($checkname != NULL)
 	{	
@@ -150,7 +150,7 @@ function updateProfile()
   		else
   			echo "Error in modification of User's name!";
   	}
-*/	
+
 }
 
 function updateProfileForm()
@@ -159,7 +159,7 @@ function updateProfileForm()
 		<form action=add.php method=post>
 		
 		<tr><td><input type=\"checkbox\" name=\"checkname\" value=\"newuname\"></td> 
-		<td>Update Name</td><td><input type=\"text\" name=\"uname\"></td></tr>
+		<td>Update Name</td><td><input type=\"text\" name=\"newuname\"></td></tr>
 
 		<tr><td><input type=\"checkbox\" name=\"checkpass\" value=\"pass\"></td> 
 		<td>Update Password</td><td><input type=\"password\" name=\"newpass\"></td></tr>
