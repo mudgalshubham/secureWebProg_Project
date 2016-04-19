@@ -22,7 +22,8 @@ isset($_REQUEST['description'])?$description=strip_tags($_REQUEST['description']
 
 isset($_REQUEST['newuname'])?$newuname=strip_tags($_REQUEST['newuname']):$newuname="";
 isset($_REQUEST['newpass'])?$newpass=strip_tags($_REQUEST['newpass']):$newpass="";
-isset($_REQUEST['email'])?$email=strip_tags($_REQUEST['email']):$email="";
+isset($_REQUEST['newphone'])?$newphone=strip_tags($_REQUEST['newphone']):$newphone="";
+isset($_REQUEST['check'])?$check=strip_tags($_REQUEST['check']):$check="";
 $IPAddress ='';
 
 connect($db);
@@ -78,6 +79,32 @@ function addCharacterMenu($s)
 		}
 	}
 	
+}
+
+function updateProfile()
+{
+	echo "Checked values are : ". $check;
+}
+
+function updateProfileForm()
+{
+	echo "<div align=center><table><tr><td>Update User Profile</td></tr>
+		<form action=add.php method=post>
+		
+		<tr><td><input type=\"checkbox\" name=\"check\" value=\"newuname\"></td> 
+		<td>Update Name<input type=\"text\" name=\"uname\"></td></tr>
+
+		<tr><td><input type=\"checkbox\" name=\"check\" value=\"pass\"></td> 
+		<td>Update Password<input type=\"password\" name=\"newpass\"></td></tr>
+
+		<tr><td><input type=\"checkbox\" name=\"check\" value=\"phone\"></td> 
+		<td>Update Phone<input type=\"text\" name=\"newphone\"></td></tr>
+
+		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
+		<tr><td><input type=\"hidden\" name=\"s\" value=\"4\"/></td></tr>
+		</form>
+		</table>
+		</div> ";
 }
 
 function addItem()
@@ -139,12 +166,6 @@ function addItemForm()
 }
 
 
-
-function updateProfileForm()
-{}
-
-function updateProfile()
-{}
 
 
 function authenticate()
