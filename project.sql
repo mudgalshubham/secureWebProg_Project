@@ -43,9 +43,11 @@ DROP TABLE IF EXISTS `projectecom`.`catalog` ;
 CREATE TABLE IF NOT EXISTS `projectecom`.`catalog` (
   `itemid` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `itemname` VARCHAR(45) NOT NULL COMMENT '',
-  `picture` VARCHAR(45) NULL COMMENT '',
+  `price` VARCHAR(10) NOT NULL COMMENT '',
   `description` VARCHAR(1024) NULL COMMENT '',
+  `picture` VARCHAR(512) NULL COMMENT '',
   `sellerid` INT NOT NULL COMMENT '',
+  
   PRIMARY KEY (`itemid`)  COMMENT '',
   INDEX `catalogusers_idx` (`sellerid` ASC)  COMMENT '',
   CONSTRAINT `catalogusers`
