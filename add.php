@@ -63,7 +63,7 @@ function addCharacterMenu($s)
 				 		logout();
 				 		break;		
 				 
-			default: header("Location:/project/index.php"); break;
+			default: break;
 		}
 	}
 	
