@@ -37,8 +37,8 @@ else
 		
 			authenticate();
 		//	checkAuth();
-			addCharacterMenu($s);
-		
+		//	addCharacterMenu($s);
+			echo "after authenticate";
 
 }
 
