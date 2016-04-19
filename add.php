@@ -110,7 +110,7 @@ function addItem()
                 </table>
                 </div> ";
         */
-        echo "Item added in catalog for ." $_SESSION['uname'];
+        echo "Item added in catalog for ". $_SESSION['uname'];
 
 		}
         else
