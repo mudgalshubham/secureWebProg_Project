@@ -122,7 +122,7 @@ function authenticate()
   			echo "Failed to Login";
   		//	logLogin($db, $postUser, "failure");
   		//	error_log("Error login to Tolkien. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
-  			header("Location:/project/login.php");
+  			//header("Location:/project/login.php");
   			
   		}
   	}
