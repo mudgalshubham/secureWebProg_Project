@@ -83,6 +83,7 @@ function addCharacterMenu($s)
 
 function updateProfile()
 {
+	global $check;
 	echo "Checked values are : ". $check;
 }
 
