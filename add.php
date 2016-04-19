@@ -88,17 +88,17 @@ function updateProfile()
 	global $checkname,$checkpass,$checkphone,$newuname, $newpass, $newphone ;
 	echo "Checked values are : ";
 	if($checkname != NULL)
-		echo $checkname;
+		echo $checkname." with new name: ".$newuname."\n";
 	if($checkpass != NULL)
-		echo $checkpass;
+		echo $checkpass." with new name: ".$newpass."\n";
 	if($checkphone != NULL)
-		echo $checkphone;
+		echo $checkphone." with new name: ".$newphone."\n";
 	
 	$userid = $_SESSION['userid'];
 	
 	global $db, $newuname, $newpass;
 	connect($db);
-
+/*
 	//update User's Name
 	if($checkname != NULL)
 	{	
@@ -150,7 +150,7 @@ function updateProfile()
   		else
   			echo "Error in modification of User's name!";
   	}
-	
+*/	
 }
 
 function updateProfileForm()
