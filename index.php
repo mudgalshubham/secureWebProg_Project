@@ -4,8 +4,10 @@
 // Purpose: Home page for eCommerce for CU Boulder application
 // Version: 1.0
 // Date: 04/04/2016
+
 include_once('/var/www/html/project/project-lib.php');
 echo "hello world";
+connect($db);
 
 /*
 session_start();
