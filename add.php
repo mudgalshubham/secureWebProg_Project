@@ -31,7 +31,8 @@ else
 {		
 	if($postEmail == null)
 		{	
-			header("Location:/project/login.php");
+			echo "email not found-> Auth pending";
+			//header("Location:/project/login.php");
 		}
 		
 			authenticate();
@@ -57,13 +58,13 @@ function addCharacterMenu($s)
 	
 			case 4:  updateProfile(); break;
 			
-			case 9:  header("Location:/project/index.php"); break;	
+			case 9:  echo "Inside case 9";break;//header("Location:/project/index.php"); break;	
 
 			case 15: // Logout
 				 		logout();
 				 		break;		
 				 
-			default: break;
+			default: echo "Inside default case";break;
 		}
 	}
 	
