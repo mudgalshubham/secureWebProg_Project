@@ -38,6 +38,8 @@ else
 			authenticate();
 		//	checkAuth();
 		//	addCharacterMenu($s);
+			echo "postEmail= ". $postEmail ;
+			echo "\npostPass= ". $postPass ;
 			echo "after authenticate\n";
 			echo "authenticated session= ". $_SESSION['authenticated'] ;
 			echo "\nsession_uname= ".$_SESSION['uname']=$uname;		//added now	
