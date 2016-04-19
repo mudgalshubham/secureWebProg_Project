@@ -43,7 +43,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 		<td><table cellpadding=\"10\"><tr><td>Product Name</td>
                 				<td>".$itemname."</td></tr>
                 				<tr><td>Price</td>
-                				<td>".$price."</td></tr>
+                				<td>$".$price."</td></tr>
                 				<tr><td>Description</td>
                 				<td>".$desc."</td></tr> 
                 		</table></td>
