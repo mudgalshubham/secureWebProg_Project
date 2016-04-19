@@ -42,8 +42,8 @@ else
 			echo "\npostPass= ". $postPass ;
 			echo "after authenticate\n";
 			echo "authenticated session= ". $_SESSION['authenticated'] ;
-			echo "\nsession_uname= ".$_SESSION['uname']=$uname;		//added now	
-			echo "\nsession_uid= ".$_SESSION['userid']=$userid;
+			echo "\nsession_uname= ".$_SESSION['uname'];		//added now	
+			echo "\nsession_uid= ".$_SESSION['userid'];
 
 }
 
