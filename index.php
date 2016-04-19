@@ -40,7 +40,7 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
 			$desc = htmlspecialchars($desc);
 			echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\">
 					<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
-                		<td><table><tr><td>Product Name</td>
+                		<td><table cellpadding=\"10\"><tr><td>Product Name</td>
                 				<td>".$itemname."</td></tr>
                 				<tr><td>Price</td>
                 				<td>".$price."</td></tr>
