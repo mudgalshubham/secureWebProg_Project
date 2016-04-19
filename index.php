@@ -5,15 +5,12 @@
 // Version: 1.0
 // Date: 04/04/2016
 
-include_once('/var/www/html/project/project-lib.php');
-echo "hello world";
-connect($db);
 
-/*
+
 session_start();
 session_regenerate_id();
 include_once('header.php');
-include_once('/var/www/html/hw9/hw9-lib.php');
+include_once('/var/www/html/project/project-lib.php');
 
 isset($_REQUEST['s'])?$s=strip_tags($_REQUEST['s']):$s="";
 isset($_REQUEST['sid'])?$sid=strip_tags($_REQUEST['sid']):$sid="";
@@ -26,6 +23,37 @@ isset($_REQUEST['url'])?$url=strip_tags($_REQUEST['url']):$url="";
 isset($_REQUEST['bookid'])?$bookid=strip_tags($_REQUEST['bookid']):$bookid="";
 
 connect($db);
+
+if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
+{
+	
+	addCharacterMenu($s);
+}
+else
+{		
+	if($postUser == null)
+		{	
+			header("Location:/hw9/login.php");
+		}
+		
+		$IPAddress = $_SERVER['REMOTE_ADDR']; 
+	//	echo "Ipadd= " .$IPAddress;
+		
+		$whiteListIPAddress = whiteList();
+		$isWhiteListIP = in_array($IPAddress,$whiteListIPAddress);
+		$attemptCount = incorrectAttempts($db,$IPAddress);
+		if(!$isWhiteListIP  && $attemptCount >= 5)
+		{
+			logLogin($db, $postUser, "failure");
+			header("Location:/hw9/login.php");		
+		}
+		else 
+		{
+			authenticate($db, $postUser, $postPass);
+			checkAuth();
+			addCharacterMenu($s);
+		}
+}
 
 switch($s){
 	case 1: if(is_numeric($s)) books($db,$sid);break;
@@ -162,5 +190,5 @@ function pictures($db)
 	echo "</table></div>";	
 }
 
-*/
+
 ?>

@@ -37,7 +37,7 @@ function whiteList(){
 function logout()
 {
 	session_destroy();
-    header("Location:/hw9/login.php");
+    header("Location:/project/login.php");
 }
 
 function checkAuth()
@@ -70,7 +70,7 @@ function checkAuth()
 	{
 		if(isset($_SERVER['HTTP_ORIGIN']))
 		{
-				if($_SERVER['HTTP_ORIGIN'] != "https://100.66.1.31")
+				if($_SERVER['HTTP_ORIGIN'] != "https://100.66.1.23")
 						logout();			
 		}
 		else

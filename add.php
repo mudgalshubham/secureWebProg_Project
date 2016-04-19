@@ -1,25 +1,19 @@
 <?php
-// Name: hw9/add.php
+// Name: project/add.php
 // Author: Shubham Mudgal
-// Purpose: Adding security to Tolkien application
+// Purpose: User's profile with available actions
 // Version: 1.0
 // Date: 04/04/2016
 
 session_start();
 session_regenerate_id();
 include_once('header.php');
-include_once('/var/www/html/hw9/hw9-lib.php');
+include_once('/var/www/html/project/project-lib.php');
 
 isset($_REQUEST['s'])?$s=strip_tags($_REQUEST['s']):$s="";
-isset($_REQUEST['postUser'])?$postUser=strip_tags($_REQUEST['postUser']):$postUser="";
+isset($_REQUEST['postEmail'])?$postEmail=strip_tags($_REQUEST['postEmail']):$postEmail="";
 isset($_REQUEST['postPass'])?$postPass=strip_tags($_REQUEST['postPass']):$postPass="";
-isset($_REQUEST['bid'])?$bid=strip_tags($_REQUEST['bid']):$bid="";
-isset($_REQUEST['cid'])?$cid=strip_tags($_REQUEST['cid']):$cid="";
-isset($_REQUEST['cname'])?$cname=strip_tags($_REQUEST['cname']):$cname="";
-isset($_REQUEST['side'])?$side=strip_tags($_REQUEST['side']):$side="";
-isset($_REQUEST['race'])?$race=strip_tags($_REQUEST['race']):$race="";
-isset($_REQUEST['url'])?$url=strip_tags($_REQUEST['url']):$url="";
-isset($_REQUEST['bookid'])?$bookid=strip_tags($_REQUEST['bookid']):$bookid="";
+
 isset($_REQUEST['newuname'])?$newuname=strip_tags($_REQUEST['newuname']):$newuname="";
 isset($_REQUEST['newpass'])?$newpass=strip_tags($_REQUEST['newpass']):$newpass="";
 isset($_REQUEST['email'])?$email=strip_tags($_REQUEST['email']):$email="";
@@ -30,18 +24,19 @@ if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 {
 	//authenticate($db, $postUser, $postPass);
 	addCharacterMenu($s);
+//	header("Location:/project/index.php");
 }
 else
 {		
-	if($postUser == null)
+	if($postEmail == null)
 		{	
-			header("Location:/hw9/login.php");
+			header("Location:/project/login.php");
 		}
 		
 		$IPAddress = $_SERVER['REMOTE_ADDR']; 
 	//	echo "Ipadd= " .$IPAddress;
 		
-		$whiteListIPAddress = whiteList();
+/*		$whiteListIPAddress = whiteList();
 		$isWhiteListIP = in_array($IPAddress,$whiteListIPAddress);
 		$attemptCount = incorrectAttempts($db,$IPAddress);
 		if(!$isWhiteListIP  && $attemptCount >= 5)
@@ -55,21 +50,36 @@ else
 			checkAuth();
 			addCharacterMenu($s);
 		}
+*/
+		else 
+		{
+			authenticate($db, $postEmail, $postPass);
+			checkAuth();
+			addCharacterMenu($s);
+		}
+
 }
 
 function addCharacterMenu($s)
 {	global $db, $cname, $side, $race, $cid,$url ;
-	switch($s)
+	
+	if(is_numeric($s))
 	{
-		case 5:	 if(is_numeric($s)) addCharacterForm(); break;
+		switch($s)
+		{
+			case 1:	 addItemForm(); break;
 
-		case 6:	 if(is_numeric($s)) addCharacterAndPicturesForm(); break;
+			case 2:	 addItem(); break;
 
-		case 7:  if(is_numeric($s)) addPicture(); break;
+			case 3:  updateProfileForm(); break;
+	
+			case 4:  updateProfile(); break;
+			
+			case 9:  header("Location:/project/index.php"); break;	
 
-		case 8:  if(is_numeric($s)) addBookForm(); break;		// Here s=8 for re-entry
-
-		case 25: if(is_numeric($s)) addBookForm(); break;		// Here s=25 for first time entry
+			case 15: // Logout
+				 		logout();
+				 		break;		
 
 		case 90: if(is_numeric($s))
 				  {
@@ -129,11 +139,19 @@ function addCharacterMenu($s)
 				  }
 				 break;
 				 
-		default: addCharacterForm(); break;
+		default: header("Location:/project/index.php"); break;
 	}
 	
-	footer();
+//	footer();
 }
+
+function addItemForm(){}
+
+function addItem(){}
+
+function updateProfileForm(){}
+
+function updateProfile(){}
 
 function updatePassword()
 {
@@ -541,46 +559,45 @@ function loginFailureReport()
 
 function authenticate()
 {
-	global $db,$postUser,$postPass;
+	global $db,$postEmail,$postPass;
 	
 	connect($db);
 	
-	$postUser=mysqli_real_escape_string($db,$postUser);
+	$postEmail=mysqli_real_escape_string($db,$postEmail);
 	$postPass=mysqli_real_escape_string($db,$postPass);
 	
-	$query="select userid, email, password, salt from users where username=?";
+	$query="select userid, uname, password, salt from users where email=?";
 	if($stmt = mysqli_prepare($db, $query))	
 	{
-		mysqli_stmt_bind_param($stmt, "s", $postUser);	
+		mysqli_stmt_bind_param($stmt, "s", $postEmail);	
 		mysqli_stmt_execute($stmt);	
-  		mysqli_stmt_bind_result($stmt, $userid, $email, $password, $salt);
+  		mysqli_stmt_bind_result($stmt, $userid, $uname, $password, $salt);
   		while(mysqli_stmt_fetch($stmt))	
   		{
   			$userid=$userid;
+  			$uname=$uname;
   			$password=$password;
   			$salt=$salt;
-  			$email=$email;
   		}
   		mysqli_stmt_close($stmt);
   		$epass=hash('sha256', $postPass.$salt);
   		if($epass == $password)	
   		{	
   			session_regenerate_id();
+  			$_SESSION['uname']=$uname;		//added now	
 			$_SESSION['userid']=$userid;
-			$_SESSION['email']=$email;
 			$_SESSION['authenticated']="yes";
 			$_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
 			$_SESSION['HTTP_USER_AGENT']=md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 			$_SESSION['created']=time();
-			$_SESSION['created']=time();
-			logLogin($db, $postUser, "success");
+		//	logLogin($db, $postUser, "success");
   		}	
   		else	
   		{	
   			echo "Failed to Login";
-  			logLogin($db, $postUser, "failure");
-  			error_log("Error login to Tolkien. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
-  			header("Location:/hw9/login.php");
+  		//	logLogin($db, $postUser, "failure");
+  		//	error_log("Error login to Tolkien. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
+  			header("Location:/project/login.php");
   			
   		}
   	}
