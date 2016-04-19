@@ -15,8 +15,8 @@ echo "<html><head></head><body>
 
 if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 {
-	echo "Welcome ". $_SESSION['uname']." <div><p align=left><a href=index.php>Home</a></p>
-	<p align=right><a href=add.php?s=1>Add Item to Sell |</a>
+	echo "Welcome ". $_SESSION['uname']." <div><p float=left><a href=index.php>Home</a></p>
+	<p float=right><a href=add.php?s=1>Add Item to Sell |</a>
 			<a href=add.php?s=3>Update Profile |</a>
  			<a href=add.php?s=15>Logout</a></p></div><hr>
  			";
