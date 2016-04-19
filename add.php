@@ -33,27 +33,7 @@ else
 			header("Location:/project/login.php");
 		}
 		
-		$IPAddress = $_SERVER['REMOTE_ADDR']; 
-	//	echo "Ipadd= " .$IPAddress;
-		
-/*		$whiteListIPAddress = whiteList();
-		$isWhiteListIP = in_array($IPAddress,$whiteListIPAddress);
-		$attemptCount = incorrectAttempts($db,$IPAddress);
-		if(!$isWhiteListIP  && $attemptCount >= 5)
-		{
-			logLogin($db, $postUser, "failure");
-			header("Location:/hw9/login.php");		
-		}
-		else 
-		{
-			authenticate($db, $postUser, $postPass);
-			checkAuth();
-			addCharacterMenu($s);
-		}
-*/
-		 
-		
-			authenticate($db, $postEmail, $postPass);
+			authenticate();
 			checkAuth();
 			addCharacterMenu($s);
 		
