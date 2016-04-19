@@ -91,7 +91,7 @@ function addItem()
 		$pictureurl = mysqli_real_escape_string($db, $pictureurl);
 		$description = mysqli_real_escape_string($db, $description);
 			
-		if($stmt = mysqli_prepare($db, "insert into pictures set itemid='', itemname=?, price=?, picture=?, description=?, sellerid=?"))
+		if($stmt = mysqli_prepare($db, "insert into catalog set itemid='', itemname=?, price=?, picture=?, description=?, sellerid=?"))
         {
                 mysqli_stmt_bind_param($stmt, "ssssi", $itemname,$price,$pictureurl,$description,$sellerid);
                 mysqli_stmt_execute($stmt);
