@@ -37,7 +37,9 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
                 				<tr><td>Price</td>
                 				<td>$".$price."</td></tr>
                 				<tr><td>Description</td>
-                				<td>".$desc."</td></tr> ";
+                				<td>".$desc."</td></tr> 
+                				<tr><td>SellerID</td>
+                				<td>".$sellerid."</td></tr> ";
                 				
                 			if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
                 			{
@@ -57,12 +59,12 @@ if($stmt = mysqli_prepare($db, "select itemid, itemname,price,picture,descriptio
         							}
 							        mysqli_stmt_close($stmt);
         
-       							 $output =  $output . '<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
-                						<td>'.$sellername.'</td></tr>
+       							 	echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
+                						<td>".$sellername."</td></tr>
                 						<tr><td>Email</td>
-		                				<td>$'.$selleremail.'</td></tr>
+		                				<td>$".$selleremail."</td></tr>
         		        				<tr><td>Contact Number</td>
-                						<td>'.$sellerphone.'</td></tr></table></td>';
+                						<td>".$sellerphone."</td></tr></table></td>";
         
     								}
                 				
