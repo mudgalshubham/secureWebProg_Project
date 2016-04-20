@@ -87,7 +87,8 @@ else
                 					<td> ".$avgrating."</td></tr>";
                 			}
                 			else
-                				echo "tr><td> Seller not rated yet! </td></tr>";
+                				echo "<tr><td> Seller not rated yet! </td></tr>";
+                			
                 				
                 				echo "</table></div> <br>";
 }
