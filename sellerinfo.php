@@ -78,5 +78,7 @@ else
                 			</tr>
                 			<tr><td> Seller's Rating</td>
                 				<td> ".$avgrating."</td></tr>
-                				</table></div> <br>
+                				</table></div> <br>";
 }
+
+?>
