@@ -95,7 +95,7 @@ else
             	mysqli_stmt_bind_param($stmt, "sii", $newreview, $currentuserid, $sellerid);
             	mysqli_stmt_execute($stmt);
             	mysqli_stmt_close($stmt);
-            	echo "Review added for user " . $sellerid;
+            	echo "Review added for user " . $sellername;
   			}
   			else
   				echo "Error in adding of Seller's review!";
