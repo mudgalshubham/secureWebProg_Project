@@ -170,16 +170,16 @@ else
                 		
         }
                 
-        echo "</tr>";
+        echo "</tr></table>";
         
         //Display Seller's rating        
         if($avgrating != null)
         {			
-            echo "<tr><td> Seller's Rating(out of 5)<Total ".$ratecount." people rated: </td>
+            echo "<table><tr><td><b> Seller's Rating(out of 5)<Total ".$ratecount." people rated: </b></td>
                 	<td> ".$avgrating."</td></tr>";
         }
         else
-            echo "<tr><td> Seller not rated yet! </td></tr>";
+            echo "<table><tr><td> Seller not rated yet! </td></tr>";
                 
        
     	
