@@ -123,8 +123,8 @@ else
 	
 		echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\" border=1>
 				<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
-                <td><th>Product Info</th><table cellpadding=\"10\" border=1>
-        		
+                <td><table border=1>
+        		<th>Product Info</th>
 	        		<tr><td>Product Name :</td>
          				<td>".$itemname."</td></tr>
                 		<tr><td>Price :</td>
@@ -132,7 +132,7 @@ else
                 		<tr><td>Description :</td>
                 		<td>".$desc."</td></tr>  
                 		</table></td>
-                <td><table cellpadding=\"10\" border=1>
+                <td><table border=1>
                 	<th>Seller's Info</th>
                 		<tr><td>Seller's Name :</td>
                 		<td>".$sellername."</td></tr>
@@ -146,7 +146,7 @@ else
         //Option to add rating and review only if the current user is not the seller itself
         if($sellerid != $currentuserid)
         {
-            echo "<td><table cellpadding=\"10\" border =1>
+            echo "<td><table  border =1>
                 	<form action=sellerinfo.php method=post>
     					<tr><td><input type=\"checkbox\" name=\"checkrating\" value=\"newrating\"></td> 
     						<td>Give rating(0-5)</td>
