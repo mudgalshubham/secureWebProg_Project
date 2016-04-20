@@ -203,7 +203,7 @@ else
          else
          	echo "<tr><td> No reviews for this Seller yet! </td></tr>"
          
-        echo "</table></div> <br>";
+    //   echo "</table></div> <br>";
                 				
                 				
 }
