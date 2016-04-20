@@ -41,7 +41,8 @@ function addUsersForm()
 	echo "<div align=center><table><tr><td>Add New User</td></tr>
 		<form action=signup.php method=post>
 		<tr><td>Name</td><td><input type=\"text\" name=\"uname\" required/></td></tr>
-		<tr><td>CU Boulder Email ID</td><td><input type=\"email\" name=\"email\" required/></td></tr>
+		<tr><td>CU Boulder Email ID</td><td><input type=\"email\" name=\"email\" 
+			pattern=\"[A-Za-z0-9._-]+@colorado.edu\" title=\"Enter CU boulder email id only\"required/></td></tr>
 		<tr><td>Password</td><td><input type=\"password\" name=\"newpass\" required/></td></tr>
 		<tr><td>Contact Number</td><td><input type=\"text\" name=\"phone\" /></td></tr>
 		<tr><td><input type=\"hidden\" name=\"optionadd\" value=\"92\"/></td></tr>
