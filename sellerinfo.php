@@ -79,7 +79,7 @@ else
             	mysqli_stmt_bind_param($stmt, "diidi", $newavgrating, $newcount, $sellerid, $newavgrating, $newcount);
             	mysqli_stmt_execute($stmt);
             	mysqli_stmt_close($stmt);
-            	echo "Rating updated for user " . $sellerid;
+            	echo "Rating updated for user " . $sellername;
   			}
   			else
   				echo "Error in adding of Seller's rating!";
