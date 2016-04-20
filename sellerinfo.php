@@ -175,7 +175,7 @@ else
         //Display Seller's rating        
         if($avgrating != null)
         {			
-            echo "<tr><td> Seller's Rating: </td>
+            echo "<tr><td> Seller's Rating(out of 5)<Total ".$ratecount." people rated: </td>
                 	<td> ".$avgrating."</td></tr>";
         }
         else
@@ -199,14 +199,30 @@ else
 			mysqli_stmt_close($stmt);
 		 } 
 		 
+		 //Query db for Buyer's info
+		 $buyernameArray = array();
+		 for($i=0; $i < sizeof($buyeridArray); $i++)
+		 {
+		 	if($stmt = mysqli_prepare($db, "select username from users where userid= ?"))
+			{
+				mysqli_stmt_bind_param($stmt, "i", $buyeridArray[$i]);
+				mysqli_stmt_execute($stmt);
+        		mysqli_stmt_bind_result($stmt, $buyername);
+        		while(mysqli_stmt_fetch($stmt))
+				{
+					array_push($buyernameArray, htmlspecialchars($buyername));
+				}
+				mysqli_stmt_close($stmt);
+		 	}
+		 } 
+		 
 		 if(sizeof($currentReviewArray) !=0)
          {
          	echo "<tr><td> Seller's Reviews </td></tr>";
          	
          	for($i=0; $i < sizeof($currentReviewArray); $i++)
 			{
-                echo "<tr><td> ".$buyeridArray[$i]."</td>
-                		<td border>".$currentReviewArray[$i] . "</td></tr>";
+                echo "<tr><td> ".$buyernameArray[$i]. "<br>". $currentReviewArray[$i] . "</td></tr>";
             }   
          }
          else
