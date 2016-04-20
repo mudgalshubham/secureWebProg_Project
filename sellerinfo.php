@@ -55,6 +55,7 @@ else
 		}
 		mysqli_stmt_close($stmt);
 		
+		echo "inside seller db query block\n sellerid= ".$sellerid;
 	}
 	
 	
