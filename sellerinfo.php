@@ -89,7 +89,7 @@ else
                 			else
                 				echo "<tr><td> Seller not rated yet! </td></tr>";
                 			
-                				
+                	
                 				echo "</table></div> <br>";
 }
 
