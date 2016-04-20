@@ -154,7 +154,7 @@ else
 									title=\"Only integer values from 0-5 are allowed\" /></td></tr>
     					<tr><td><input type=\"checkbox\" name=\"checkreview\" value=\"newreview\"></td> 
     						<td>Add reviews</td>
-    						<td><textarea cols=\"10\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
+    						<td><textarea cols=\"15\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
     						<input type=\"hidden\" name=\"oldavgrating\" value=\"$avgrating\"/>
     						<input type=\"hidden\" name=\"ratecount\" value=\"$ratecount\"/>
     						<input type=\"hidden\" name=\"s\" value=\"25\"/>	
