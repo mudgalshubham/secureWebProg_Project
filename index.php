@@ -21,7 +21,7 @@ echo " Welcome to the Catalog";
 if($stmt = mysqli_prepare($db, "select itemid,itemname,price,picture,description from catalog"))
 {
 		mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $itemid, $itemname, $price, $picture, $desc, $sellername, $selleremail, $sellerphone);
+        mysqli_stmt_bind_result($stmt, $itemid, $itemname, $price, $picture, $desc);
         while(mysqli_stmt_fetch($stmt))
 		{
 			$itemid= htmlspecialchars($itemid);
