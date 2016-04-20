@@ -118,9 +118,9 @@ else
 		
 	 }
 	
-		echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\">
+		echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\" border=1>
 				<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
-                <td><table cellpadding=\"10\">
+                <td><table cellpadding=\"10\" border=1>
         		<th>Product Info</th>
 	        		<tr><td>Product Name :</td>
          				<td>".$itemname."</td></tr>
@@ -129,7 +129,7 @@ else
                 		<tr><td>Description :</td>
                 		<td>".$desc."</td></tr>  
                 		</table></td>
-                <td><table cellpadding=\"10\">
+                <td><table cellpadding=\"10\" border=1>
                 	<th>Seller's Info</th>
                 		<tr><td>Seller's Name :</td>
                 		<td>".$sellername."</td></tr>
@@ -143,13 +143,13 @@ else
         //Option to add rating and review only if the current user is not the seller itself
         if($sellerid != $currentuserid)
         {
-            echo "<td><table cellpadding=\"10\">
+            echo "<td><table cellpadding=\"10\" border =1>
                 	<form action=sellerinfo.php method=post>
     					<tr><td><input type=\"checkbox\" name=\"checkrating\" value=\"newrating\"></td> 
-    						<td>Give rating to this seller(0-5)</td>
+    						<td>Give rating(0-5)</td>
     						<td><input type=\"text\" name=\"newrating\" /></td></tr>
     					<tr><td><input type=\"checkbox\" name=\"checkreview\" value=\"newreview\"></td> 
-    						<td>Add reviews to this seller</td>
+    						<td>Add reviews</td>
     						<td><textarea cols=\"5\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
     						<input type=\"hidden\" name=\"oldavgrating\" value=\"$avgrating\"/>
     						<input type=\"hidden\" name=\"ratecount\" value=\"$ratecount\"/>
