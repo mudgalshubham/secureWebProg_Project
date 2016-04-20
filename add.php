@@ -31,24 +31,22 @@ $IPAddress ='';
 connect($db);
 if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 {
-	//authenticate($db, $postUser, $postPass);
-	addCharacterMenu($s);
-//	header("Location:/project/index.php");
+	projectMenu($s);
+
 }
 else
 {		
 	if($postEmail == null)
 		{	
-			echo "email not found-> Auth pending";
-			//header("Location:/project/login.php");
+			header("Location:/project/login.php");
 		}
 		
 			authenticate();
-		//	checkAuth();
-			addCharacterMenu($s);
+			checkAuth();
+			projectMenu($s);
 }
 
-function addCharacterMenu($s)
+function projectMenu($s)
 {	
 	global $db, $cname, $side, $race, $cid,$url ;
 	
@@ -252,14 +250,12 @@ function authenticate()
 			$_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
 			$_SESSION['HTTP_USER_AGENT']=md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 			$_SESSION['created']=time();
-		//	logLogin($db, $postUser, "success");
+
   		}	
   		else	
   		{	
   			echo "Failed to Login";
-  		//	logLogin($db, $postUser, "failure");
-  		//	error_log("Error login to Tolkien. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
-  			//header("Location:/project/login.php");
+  			header("Location:/project/login.php");
   			
   		}
   	}
