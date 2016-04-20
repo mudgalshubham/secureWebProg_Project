@@ -38,7 +38,7 @@ else
 
 function addUsersForm()
 {
-	echo "<div align=center><table><tr><td>Add New User</td></tr>
+	echo "<div align=center><table><tr><td><b>Add New User</b></td></tr>
 		<form action=signup.php method=post>
 		<tr><td>Name</td><td><input type=\"text\" name=\"uname\" required/></td></tr>
 		<tr><td>CU Boulder Email ID</td><td><input type=\"email\" name=\"email\" 

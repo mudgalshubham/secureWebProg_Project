@@ -81,14 +81,6 @@ function addCharacterMenu($s)
 function updateProfile()
 {
 	global $checkname,$checkpass,$checkphone,$newuname, $newpass, $newphone ;
-/*	echo "Checked values are : ";
-	if($checkname != NULL)
-		echo $checkname." with new name: ".$newuname."\n";
-	if($checkpass != NULL)
-		echo $checkpass." with new name: ".$newpass."\n";
-	if($checkphone != NULL)
-		echo $checkphone." with new name: ".$newphone."\n";
-*/	
 	$userid = $_SESSION['userid'];
 	
 	global $db, $newuname, $newpass;
@@ -97,6 +89,8 @@ function updateProfile()
 	//update User's Name
 	if($checkname != NULL)
 	{	
+	  if($newuname != null)
+	  {
 		$newuname=mysqli_real_escape_string($db,$newuname);
 		
 		if($stmt = mysqli_prepare($db, "update users set username =? where userid=?"))
@@ -108,11 +102,16 @@ function updateProfile()
   		}
   		else
   			echo "Error in modification of User's name!";
+  	  }
+  	  else
+  	  	echo "Error: User's Name cannot be null";
   	}
 	
 	//update Password
 	if($checkpass != NULL)
 	{	
+	  if($newpass != null)
+	  {
 		$newpass=mysqli_real_escape_string($db,$newpass);
 				
 		$salt = rand(50,10000);
@@ -128,6 +127,9 @@ function updateProfile()
   		}
   		else
   			echo "Error in modification of password!";
+  	  }
+  	  else 
+  	  		echo "Error: Password cannot be null";
   	}
 	
 	//update User's Phone Number
@@ -144,13 +146,13 @@ function updateProfile()
   		}
   		else
   			echo "Error in modification of User's name!";
-  	}
-
+  	  }
+	
 }
 
 function updateProfileForm()
 {
-	echo "<div align=center><table><tr><td>Update User Profile</td></tr>
+	echo "<div align=center><table><tr><td><b>Update User Profile</b></td></tr>
 		<form action=add.php method=post>
 		
 		<tr><td><input type=\"checkbox\" name=\"checkname\" value=\"newuname\"></td> 
@@ -196,7 +198,7 @@ function addItem()
 
 function addItemForm()
 {
-	echo "<div align=center><table><tr><td>Add New Item</td></tr>
+	echo "<div align=center><table><tr><td><b>Add New Item</b></td></tr>
 		<form action=add.php method=post>
 		<tr><td>Name of the Item</td><td><input type=\"text\" name=\"itemname\" required/></td></tr>
 		

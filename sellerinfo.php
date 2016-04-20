@@ -218,11 +218,11 @@ else
 		 
 		 if(sizeof($currentReviewArray) !=0)
          {
-         	echo "<tr><td> Seller's Reviews </td></tr>";
+         	echo "<tr><td><b>Seller's Reviews</b></td></tr>";
          	
          	for($i=0; $i < sizeof($currentReviewArray); $i++)
 			{
-                echo "<tr><td> ".$buyernameArray[$i]. "<br>". $currentReviewArray[$i] . "</td></tr>";
+                echo "<tr><td><font color=\"red\"> ".$buyernameArray[$i]. "</font><br>". $currentReviewArray[$i] . "</td></tr>";
             }   
          }
          else
