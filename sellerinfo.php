@@ -62,17 +62,21 @@ else
 	
 			echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\">
 					<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
-                		<td><table cellpadding=\"10\"><tr><td>Product Name</td>
+                		<td><table cellpadding=\"10\">
+                		<th>Product Info</th>
+                		<tr><td>Product Name</td>
                 				<td>".$itemname."</td></tr>
                 				<tr><td>Price</td>
                 				<td>$".$price."</td></tr>
                 				<tr><td>Description</td>
                 				<td>".$desc."</td></tr>  
                 				</table></td>
-                			<td><table cellpadding=\"10\"><tr><td>Seller's Name</td>
+                			<td><table cellpadding=\"10\">
+                			<th>Seller's Info</th>
+                			<tr><td>Seller's Name</td>
                 					<td>".$sellername."</td></tr>
                 					<tr><td>Email</td>
-		                			<td>$".$selleremail."</td></tr>
+		                			<td>".$selleremail."</td></tr>
         		        			<tr><td>Contact Number</td>
                 					<td>".$sellerphone."</td></tr></table></td>
                 			</tr>
