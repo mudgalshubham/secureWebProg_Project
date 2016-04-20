@@ -150,7 +150,7 @@ else
     						<td><input type=\"text\" name=\"newrating\" /></td></tr>
     					<tr><td><input type=\"checkbox\" name=\"checkreview\" value=\"newreview\"></td> 
     						<td>Add reviews to this seller</td>
-    						<td><textarea cols=\"50\" rows=\"4\" name=\"newreview\"></textarea></td></tr>
+    						<td><textarea cols=\"5\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
     						<input type=\"hidden\" name=\"oldavgrating\" value=\"$avgrating\"/>
     						<input type=\"hidden\" name=\"ratecount\" value=\"$ratecount\"/>
     						<input type=\"hidden\" name=\"s\" value=\"25\"/>				
