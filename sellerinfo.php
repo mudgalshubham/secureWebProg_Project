@@ -123,8 +123,8 @@ else
 	
 		echo "<div style=\"border: 5px ridge silver;\"><table cellpadding=\"20\" border=1>
 				<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
-                <td><table cellpadding=\"10\" border=1>
-        		<th>Product Info</th>
+                <td><th>Product Info</th><table cellpadding=\"10\" border=1>
+        		
 	        		<tr><td>Product Name :</td>
          				<td>".$itemname."</td></tr>
                 		<tr><td>Price :</td>
