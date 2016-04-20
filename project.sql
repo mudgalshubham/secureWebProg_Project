@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `projectecom`.`rating` (
   `ratingid` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `avgrating` DECIMAL(3,2) NULL COMMENT '',
   `count` INT NULL COMMENT '',
-  `sellerid` INT NOT NULL COMMENT '',
+  `sellerid` INT NOT NULL UNIQUE COMMENT '',
   PRIMARY KEY (`ratingid`)  COMMENT '',
   INDEX `ratinguser_idx` (`sellerid` ASC)  COMMENT '',
   CONSTRAINT `ratinguser`
