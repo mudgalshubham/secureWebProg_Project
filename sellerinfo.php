@@ -55,16 +55,16 @@ else
 		}
 		mysqli_stmt_close($stmt);
 		
-		echo "inside seller db query block\n sellerid= ".$sellerid;
+	
 	}
 	
 	
 	//Add rating and reviews for this seller
 	if($s==25)
 	{
-		echo "inside s=25 block";
+
 		//Add Seller's Rating
-/*		if($checkrating != NULL)
+		if($checkrating != NULL)
 		{	
 			$newrating=mysqli_real_escape_string($db,$newrating);
 			$ratecount=mysqli_real_escape_string($db,$ratecount);
@@ -100,7 +100,7 @@ else
   			else
   				echo "Error in adding of Seller's review!";
   		}
-  */
+  
 	}
 	
 	
