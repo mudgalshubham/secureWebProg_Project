@@ -64,25 +64,32 @@ else
 					<tr><td> <img src=\"".$picture."\" height=\"100\" width=\"100\"></td>
                 		<td><table cellpadding=\"10\">
                 		<th>Product Info</th>
-                		<tr><td>Product Name</td>
+                		<tr><td>Product Name :</td>
                 				<td>".$itemname."</td></tr>
-                				<tr><td>Price</td>
+                				<tr><td>Price :</td>
                 				<td>$".$price."</td></tr>
-                				<tr><td>Description</td>
+                				<tr><td>Description :</td>
                 				<td>".$desc."</td></tr>  
                 				</table></td>
                 			<td><table cellpadding=\"10\">
                 			<th>Seller's Info</th>
-                			<tr><td>Seller's Name</td>
+                			<tr><td>Seller's Name :</td>
                 					<td>".$sellername."</td></tr>
-                					<tr><td>Email</td>
+                					<tr><td>Email :</td>
 		                			<td>".$selleremail."</td></tr>
-        		        			<tr><td>Contact Number</td>
+        		        			<tr><td>Contact Number :</td>
                 					<td>".$sellerphone."</td></tr></table></td>
-                			</tr>
-                			<tr><td> Seller's Rating</td>
-                				<td> ".$avgrating."</td></tr>
-                				</table></div> <br>";
+                			</tr>";
+                			if($avgrating != null)
+                			{
+                			
+                				echo"<tr><td> Seller's Rating: </td>
+                					<td> ".$avgrating."</td></tr>";
+                			}
+                			else
+                				echo "tr><td> Seller not rated yet! </td></tr>";
+                				
+                				echo "</table></div> <br>";
 }
 
 ?>
