@@ -29,6 +29,8 @@ if(!isset($_SESSION['authenticated']))
 
 else
 {
+	$currentuserid = $_SESSION['userid'];
+	
 	if($stmt = mysqli_prepare($db, "select u.userid,u.username,u.email,u.phone from 
 		users as u, catalog as c where c.sellerid=u.userid and c.itemid= ?"))
 	{
@@ -78,19 +80,39 @@ else
                 					<tr><td>Email :</td>
 		                			<td>".$selleremail."</td></tr>
         		        			<tr><td>Contact Number :</td>
-                					<td>".$sellerphone."</td></tr></table></td>
-                			</tr>";
-                			if($avgrating != null)
-                			{
+                					<td>".$sellerphone."</td></tr></table></td>";
                 			
-                				echo"<tr><td> Seller's Rating: </td>
-                					<td> ".$avgrating."</td></tr>";
-                			}
-                			else
-                				echo "<tr><td> Seller not rated yet! </td></tr>";
+                
                 			
-                	
-                				echo "</table></div> <br>";
+               //Option to add rating and review only if the current user is not the seller itself
+               	if($sellerid != $currentuserid)
+               	{
+               			echo "<td><table cellpadding=\"10\">
+                				<form action=sellerinfo.php method=post>
+    								<tr><tr><td><input type=\"checkbox\" name=\"checkname\" value=\"newuname\"></td> 
+    									<td>Give rating to this seller(0-5)</td>
+    									<td><input type=\"text\" name=\"rating\" /></td></tr>
+                					<tr><td><input type=\"submit\" name=\"submit\" value=\"View Seller's Info\"/></td></tr>
+                				<tr><td>Rating :</td>
+                					<td>".$sellername."</td></tr>
+                					<tr><td>Email :</td>
+		                			<td>".$selleremail."</td></tr>
+        		        			<tr><td>Contact Number :</td>
+                					<td>".$sellerphone."</td></tr></table></td>";
+                }
+                
+                echo "</tr>";
+                if($avgrating != null)
+                {			
+                		echo"<tr><td> Seller's Rating: </td>
+                			<td> ".$avgrating."</td></tr>";
+                }
+                else
+                		echo "<tr><td> Seller not rated yet! </td></tr>";
+                
+                echo "</table></div> <br>";
+                				
+                				
 }
 
 ?>

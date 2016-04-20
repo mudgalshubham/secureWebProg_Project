@@ -16,7 +16,7 @@ if(!isset($_SESSION['authenticated']))							//Shows login form only if session 
 		<form action=add.php method=post>
 		<tr><td>Email</td><td><input type=\"text\" name=\"postEmail\" 
 		pattern=\"[A-Za-z0-9._-]+@colorado.edu\" title=\"Enter CU boulder email id only\" required/></td></tr>
-		<tr><td>Password</td><td><input type=\"password\" name=\"postPass\" required/></td></tr>
+		<tr><td>Password</td><td><input type=\"password\" name=\"postPass\" /></td></tr>
 		<tr><td><input type=\"hidden\" name=\"s\" value=\"9\"/></td></tr>
 		<tr><td><input type=\"submit\" name=\"submit\" value=\"submit\"/></td></tr>
 		</form>

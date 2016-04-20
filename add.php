@@ -186,20 +186,7 @@ function addItem()
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_close($stmt);
         	
-	/*		$bookid = "";
-			$s = "";
-		
-			echo "<div align=center><table><tr><td>Added Picture for ".$cname." </td></tr>
-                <form action=add.php method=post>
-                <tr><td><input type=\"submit\" name=\"submit\" value=\"Add Character to Books\"/></td></tr>
-                <tr><td><input type=\"hidden\" name=\"s\" value=\"25\"/></td></tr>
-                <tr><td><input type=\"hidden\" name=\"cid\" value=\"$cid\"/></td></tr>
-                <tr><td><input type=\"hidden\" name=\"cname\" value=\"$cname\"/></td></tr>
-                </form>
-                </table>
-                </div> ";
-        */
-        echo "Item added in catalog for ". $_SESSION['uname'];
+        		echo "Item added in catalog for ". $_SESSION['uname'];
 
 		}
         else

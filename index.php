@@ -60,7 +60,7 @@ if($stmt = mysqli_prepare($db, "select itemid,itemname,price,picture,description
 											<input type=\"hidden\" name=\"price\" value=\"$price\"/>
 											<input type=\"hidden\" name=\"picture\" value=\"$picture\"/>
 											<input type=\"hidden\" name=\"desc\" value=\"$desc\"/>
-											</form>
+										</form>
                 						</td></tr>
                 					</table></td>";
                 			}
