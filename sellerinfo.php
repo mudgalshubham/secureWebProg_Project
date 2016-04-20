@@ -61,8 +61,9 @@ else
 	//Add rating and reviews for this seller
 	if($s==25)
 	{
+		echo "inside s=25 block";
 		//Add Seller's Rating
-		if($checkrating != NULL)
+/*		if($checkrating != NULL)
 		{	
 			$newrating=mysqli_real_escape_string($db,$newrating);
 			$ratecount=mysqli_real_escape_string($db,$ratecount);
@@ -98,6 +99,7 @@ else
   			else
   				echo "Error in adding of Seller's review!";
   		}
+  */
 	}
 	
 	
@@ -147,10 +149,11 @@ else
                 	<form action=sellerinfo.php method=post>
     					<tr><td><input type=\"checkbox\" name=\"checkrating\" value=\"newrating\"></td> 
     						<td>Give rating(0-5)</td>
-    						<td><input type=\"text\" name=\"newrating\" /></td></tr>
+    						<td><input type=\"text\" name=\"newrating\" pattern=\"[0-5]\" 
+									title=\"Only integer values from 0-5 are allowed\" /></td></tr>
     					<tr><td><input type=\"checkbox\" name=\"checkreview\" value=\"newreview\"></td> 
     						<td>Add reviews</td>
-    						<td><textarea cols=\"5\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
+    						<td><textarea cols=\"10\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
     						<input type=\"hidden\" name=\"oldavgrating\" value=\"$avgrating\"/>
     						<input type=\"hidden\" name=\"ratecount\" value=\"$ratecount\"/>
     						<input type=\"hidden\" name=\"s\" value=\"25\"/>				
