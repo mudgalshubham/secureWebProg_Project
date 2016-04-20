@@ -157,7 +157,12 @@ else
     						<td><textarea cols=\"10\" rows=\"10\" name=\"newreview\"></textarea></td></tr>
     						<input type=\"hidden\" name=\"oldavgrating\" value=\"$avgrating\"/>
     						<input type=\"hidden\" name=\"ratecount\" value=\"$ratecount\"/>
-    						<input type=\"hidden\" name=\"s\" value=\"25\"/>				
+    						<input type=\"hidden\" name=\"s\" value=\"25\"/>	
+    						<input type=\"hidden\" name=\"itemid\" value=\"$itemid\"/>
+											<input type=\"hidden\" name=\"itemname\" value=\"$itemname\"/>
+											<input type=\"hidden\" name=\"price\" value=\"$price\"/>
+											<input type=\"hidden\" name=\"picture\" value=\"$picture\"/>
+											<input type=\"hidden\" name=\"desc\" value=\"$desc\"/>			
                 		<tr><td><input type=\"submit\" name=\"submit\" value=\"Submit\"/></td></tr>
                 	</form>
                 	</table>
