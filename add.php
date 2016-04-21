@@ -145,6 +145,11 @@ function updateProfile()
   		else
   			echo "Error in modification of User's name!";
   	  }
+  	  
+  	  if($checkphone == NULL && $checkpass == NULL && $checkname == NULL)
+  	  {
+  	  		echo "Error: Please select checkboxes corresponding the respective field to update the values.";
+  	  }
 	
 }
 
