@@ -48,7 +48,7 @@ else
 
 function projectMenu($s)
 {	
-	global $db, $cname, $side, $race, $cid,$url ;
+	global $db ;
 	
 	if(is_numeric($s))
 	{

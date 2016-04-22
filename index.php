@@ -70,33 +70,4 @@ if($stmt = mysqli_prepare($db, "select itemid,itemname,price,picture,description
 }
          
 
-function getSellerInfo($sellerid)
-{
-	global $db;
-	$output = '';
-	if($stmt = mysqli_prepare($db, "select username,email,phone from users where userid=?"))
-									{
-									mysqli_stmt_bind_param($stmt, "s", $sellerid);
-									mysqli_stmt_execute($stmt);
-							        mysqli_stmt_bind_result($stmt, $sellername, $selleremail, $sellerphone);
-							        while(mysqli_stmt_fetch($stmt))
-									{
-										$sellername= htmlspecialchars($sellername);
-										$selleremail= htmlspecialchars($selleremail);
-							            $sellerphone= htmlspecialchars($sellerphone);
-        							}
-							        mysqli_stmt_close($stmt);
-        
-       							 	echo "<td><table cellpadding=\"10\"><tr><td>Seller\'s Name</td>
-                						<td>".$sellername."</td></tr>
-                						<tr><td>Email</td>
-		                				<td>$".$selleremail."</td></tr>
-        		        				<tr><td>Contact Number</td>
-                						<td>".$sellerphone."</td></tr></table></td>";
-        
-    								}
-        
-}
-
-
 ?>
