@@ -33,7 +33,7 @@ if(!isset($_SESSION['authenticated']))				//Shows signup form only if session is
 		echo "Invalid Data!";
 }
 else
-	header("Location:/project/index.php");	
+	header("Location:/project/login.php");	
 	
 
 function addUsersForm()

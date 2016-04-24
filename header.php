@@ -9,20 +9,36 @@
 session_start();
 session_regenerate_id();
 
+include_once('/var/www/html/project/project-lib.php');
+
 echo "<html><head></head><body>
 		<div align=center><h1>e-Commerce for CU Boulder</h1></div><hr>";
 
 
 if(isset($_SESSION['authenticated']) && $_SESSION['authenticated']=="yes")
 {
-	echo " Welcome ". $_SESSION['uname']."<br><p style=\"float: right;\">
+	if(isAdmin())
+	{
+		echo " Welcome ". $_SESSION['uname']."<br><p style=\"float: right;\">
+			<a href=add.php?s=91>Show Users List |</a>
+			<a href=add.php?s=92>Failed Login Report |</a>
+			<a href=add.php?s=3>Update Profile |</a>
+ 			<a href=add.php?s=15>Logout</a></p> 
+ 			<p><a href=index.php>Home</a></p>
+			<hr>
+ 			";
+ 	}
+ 	else
+ 	{
+ 	
+		echo " Welcome ". $_SESSION['uname']."<br><p style=\"float: right;\">
 			<a href=add.php?s=1>Add Item to Sell |</a>
 			<a href=add.php?s=3>Update Profile |</a>
  			<a href=add.php?s=15>Logout</a></p> 
  			<p><a href=index.php>Home</a></p>
 			<hr>
  			";
-  			
+  	}		
   
 }
 else
@@ -35,5 +51,8 @@ else
 }
 
 echo "</body></html>";
+
+
+
 
 ?>

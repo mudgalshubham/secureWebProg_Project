@@ -40,6 +40,16 @@ function logout()
     header("Location:/project/login.php");
 }
 
+function isAdmin()
+{
+	if ( isset($_SESSION['userid']) && $_SESSION['userid'] == 6)
+	{
+		return true;
+	}
+	else
+		return false;
+}
+
 function checkAuth()
 {
 	if(isset($_SESSION['HTTP_USER_AGENT']))

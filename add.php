@@ -40,10 +40,24 @@ else
 		{	
 			header("Location:/project/login.php");
 		}
+	
+	$IPAddress = $_SERVER['REMOTE_ADDR']; 
+	//	echo "Ipadd= " .$IPAddress;
 		
+		$whiteListIPAddress = whiteList();
+		$isWhiteListIP = in_array($IPAddress,$whiteListIPAddress);
+		$attemptCount = incorrectAttempts($db,$IPAddress);
+		if(!$isWhiteListIP  && $attemptCount >= 5)
+		{
+			logLogin($db, $postUser, "failure");
+			header("Location:/project/login.php");		
+		}
+		else 
+		{	
 			authenticate();
 			checkAuth();
 			projectMenu($s);
+		}
 }
 
 function projectMenu($s)
@@ -68,6 +82,20 @@ function projectMenu($s)
 				 		logout();
 				 		break;		
 				 
+			case 91: if(isAdmin()) 
+						showUsers(); 
+				 	 else
+				 		echo "User not authorized to use this functionality";
+				 	
+				 		break;
+			
+			case 92: if(isAdmin()) 
+						loginFailureReport(); 
+				 	 else
+						echo "User not authorized to use this functionality";
+						
+						break;
+						
 			default: echo "Invalid Data Found";break;
 		}
 	}
@@ -220,6 +248,97 @@ function addItemForm()
 }
 
 
+function showUsers()
+{	global $db;
+
+	connect($db);
+	if($stmt = mysqli_prepare($db, "select username from users"))
+        {
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_bind_result($stmt, $uname);
+                while(mysqli_stmt_fetch($stmt))
+				{
+					$uname = htmlspecialchars($uname);
+					echo "<table><th><b>Users of this application</b></th>
+                			<tr><td>$uname<br></td></tr><table>";
+				}
+				mysqli_stmt_close($stmt);
+        }
+}
+
+
+function logLogin($db, $user, $msg)
+{
+	$IPAddress = $_SERVER['REMOTE_ADDR'];
+	
+	if($stmt = mysqli_prepare($db,"insert into login set loginid='', ip=?, user=?, action=?, date=NOW()"))
+	{
+		mysqli_stmt_bind_param($stmt, "sss", $IPAddress, $user, $msg);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+		
+	}
+	
+	else
+	{
+		echo "Error"; 
+	 	
+	}
+	return;
+}
+
+function incorrectAttempts($db, $IPAddress)
+{	
+	connect($db);
+	if($stmt = mysqli_prepare($db,"select count(*) from login where action='failure' and ip=? and date > DATE_SUB(NOW(),INTERVAL 1 HOUR)"))
+	{
+			mysqli_stmt_bind_param($stmt, "s", $IPAddress);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $count);
+			while(mysqli_stmt_fetch($stmt))
+			{
+				 $count = htmlspecialchars($count);
+			}
+			mysqli_stmt_close($stmt);
+  			return $count;
+	}
+	else
+	{
+		echo "Error"; 
+	 	exit;
+	}
+	return 0;
+}
+
+function loginFailureReport()
+{
+	global $db;
+	connect($db);
+	
+	if($stmt = mysqli_prepare($db,"select ip, count(*) from login where action='failure' GROUP BY ip"))
+	{				
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $IPAddress, $count);
+		echo "<table><tr>Login Failure Details</tr>
+				<tr><td><b>IP Address</b></td>
+					<td><b>Number of Failed Attempts</b></td></tr>";
+		while(mysqli_stmt_fetch($stmt))
+		{
+			$IPAddress = htmlspecialchars($IPAddress);
+			$count = htmlspecialchars($count);
+			echo "<tr><td>$IPAddress<br></td>
+					<td>&nbsp&nbsp$count</td></tr>";
+		}
+		echo "</table>";
+		mysqli_stmt_close($stmt);
+	}
+	else
+	{
+		echo "Error"; 
+		exit;
+	}
+
+}
 
 
 function authenticate()
@@ -255,13 +374,14 @@ function authenticate()
 			$_SESSION['ip']=$_SERVER['REMOTE_ADDR'];
 			$_SESSION['HTTP_USER_AGENT']=md5($_SERVER['SERVER_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 			$_SESSION['created']=time();
-
+			logLogin($db, $postUser, "success");
   		}	
   		else	
   		{	
   			echo "Failed to Login";
   			header("Location:/project/login.php");
-  			
+  			error_log("Error login to eCommerce Application. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
+  			header("Location:/project/login.php");
   		}
   	}
 }

@@ -104,6 +104,20 @@ CREATE TABLE IF NOT EXISTS `projectecom`.`reviews` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `projectecom`.`login`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `projectecom`.`login` ;
+
+CREATE TABLE IF NOT EXISTS `projectecom`.`login` (
+  `loginid` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `ip` VARCHAR(45) NOT NULL COMMENT '',
+  `user` VARCHAR(45) NULL COMMENT '',
+  `date` DATETIME NOT NULL COMMENT '',
+  `action` VARCHAR(10) NOT NULL COMMENT '',
+  PRIMARY KEY (`loginid`)  COMMENT '')
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
