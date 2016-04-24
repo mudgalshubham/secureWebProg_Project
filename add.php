@@ -256,12 +256,13 @@ function showUsers()
         {
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_bind_result($stmt, $uname);
+                echo "<table><th><b>Users of this application</b></th>";
                 while(mysqli_stmt_fetch($stmt))
 				{
 					$uname = htmlspecialchars($uname);
-					echo "<table><th><b>Users of this application</b></th>
-                			<tr><td>$uname<br></td></tr><table>";
+					echo "<tr><td>$uname<br></td></tr><table>";
 				}
+				echo "</table>";
 				mysqli_stmt_close($stmt);
         }
 }
@@ -329,6 +330,9 @@ function loginFailureReport()
 			echo "<tr><td>$IPAddress<br></td>
 					<td>&nbsp&nbsp$count</td></tr>";
 		}
+		if($IPAddress == null)
+			echo "<tr><td>No failed logins till now!</td></tr>";
+			
 		echo "</table>";
 		mysqli_stmt_close($stmt);
 	}
@@ -379,7 +383,7 @@ function authenticate()
   		else	
   		{	
   			echo "Failed to Login";
-  			header("Location:/project/login.php");
+  			logLogin($db, $postUser, "failure");
   			error_log("Error login to eCommerce Application. IP:" . $_SERVER['REMOTE_ADDRESS'], 0);
   			header("Location:/project/login.php");
   		}
