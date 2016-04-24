@@ -320,7 +320,7 @@ function loginFailureReport()
 	{				
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $IPAddress, $count);
-		echo "<div align=center><table ><tr>Login Failure Details</tr>
+		echo "<div align=center><table border=1><tr>Login Failure Details</tr>
 				<tr><td><b>IP Address</b></td>
 					<td><b>Number of Failed Attempts</b></td></tr>";
 		while(mysqli_stmt_fetch($stmt))
