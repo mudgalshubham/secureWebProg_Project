@@ -256,13 +256,13 @@ function showUsers()
         {
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_bind_result($stmt, $uname);
-                echo "<table><th><b>Users of this application</b></th>";
+                echo "<div align=center><table><th><b>Users of this application</b></th>";
                 while(mysqli_stmt_fetch($stmt))
 				{
 					$uname = htmlspecialchars($uname);
 					echo "<tr><td>$uname<br></td></tr><table>";
 				}
-				echo "</table>";
+				echo "</table></div>";
 				mysqli_stmt_close($stmt);
         }
 }
@@ -320,7 +320,7 @@ function loginFailureReport()
 	{				
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $IPAddress, $count);
-		echo "<table><tr>Login Failure Details</tr>
+		echo "<div align=center><table ><tr>Login Failure Details</tr>
 				<tr><td><b>IP Address</b></td>
 					<td><b>Number of Failed Attempts</b></td></tr>";
 		while(mysqli_stmt_fetch($stmt))
@@ -333,7 +333,7 @@ function loginFailureReport()
 		if($IPAddress == null)
 			echo "<tr><td>No failed logins till now!</td></tr>";
 			
-		echo "</table>";
+		echo "</table></div>";
 		mysqli_stmt_close($stmt);
 	}
 	else
